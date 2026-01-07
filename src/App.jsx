@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Header from "./components/Header/Header";
 import SearchForm from "./components/SearchForm/SearchForm";
+import BookGrid from "./components/BookGrid/BookGrid";
 import searchBooks from "./API/google-books";
+
 
 export default function App() {
   const [books, setBooks] = useState([]);
@@ -45,11 +47,8 @@ export default function App() {
           </p>
         )}
 
-        <ul>
-          {books.map((book) => (
-            <li key={book.id}>{book.volumeInfo?.title || "Untitled"}</li>
-          ))}
-        </ul>
+        <BookGrid books={books} />
+
       </main>
     </>
   );
