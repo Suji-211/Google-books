@@ -1,0 +1,114 @@
+@use "../../styles/variables" as v;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: min(920px, 100%);
+  max-height: min(85vh, 900px);
+  overflow: auto;
+  position: relative;
+
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  background: v.$color-bg;
+  color: v.$color-text;
+
+  padding: 18px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-text;
+
+  cursor: pointer;
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 760px) {
+  .content {
+    grid-template-columns: 220px 1fr;
+    align-items: start;
+  }
+}
+
+.thumb {
+  width: 100%;
+  max-width: 220px;
+  border-radius: v.$radius-sm;
+  object-fit: cover;
+}
+
+.meta {
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.authors {
+  margin: 0 0 14px;
+  color: v.$color-muted;
+}
+
+.details {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+
+  p {
+    margin: 0;
+    font-size: v.$font-sm;
+    color: v.$color-muted;
+
+    strong {
+      color: v.$color-text;
+    }
+  }
+}
+
+.desc {
+  margin: 0 0 16px;
+  line-height: 1.45;
+  color: v.$color-muted;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: v.$radius-sm;
+
+  background: v.$color-primary;
+  color: #081026;
+  font-weight: 700;
+  text-decoration: none;
+}

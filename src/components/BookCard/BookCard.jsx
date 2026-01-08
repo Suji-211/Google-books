@@ -1,6 +1,6 @@
 import styles from "./BookCard.module.scss";
 
-export default function BookCard({ book }) {
+export default function BookCard({ book, onSelect }) {
   const info = book.volumeInfo || {};
 
   const title = info.title || "Untitled";
@@ -12,8 +12,18 @@ export default function BookCard({ book }) {
     info.imageLinks?.smallThumbnail ||
     "https://via.placeholder.com/128x192?text=No+Cover";
 
+    const handleClick = () => onSelect?.(book);
+
   return (
-    <article className={styles.card}>
+    <article className={styles.card}  
+     onClick={handleClick}
+     role="button"
+     tabIndex={0}
+     onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") handleClick();
+      }}
+      aria-label={`Open details for ${title}`}
+    >
       <img className={styles.thumb} src={thumbnail} alt={title} />
 
       <div className={styles.meta}>

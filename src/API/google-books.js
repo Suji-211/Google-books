@@ -1,22 +1,24 @@
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 
-export default async function searchBooks(query) {
+export default async function searchBooks(query, startIndex = 0, maxResults = 12) {
   const trimmed = query.trim();
 
-  // If the user submits empty input, return no results
-  if (!trimmed) return [];
+  if (!trimmed) {
+    return { items: [], totalItems: 0 };
+  }
 
-  const url = `${BASE_URL}?q=${encodeURIComponent(trimmed)}&maxResults=12`;
+  const url = `${BASE_URL}?q=${encodeURIComponent(trimmed)}&startIndex=${startIndex}&maxResults=${maxResults}`;
 
   const response = await fetch(url);
-
-  // If the request fails, throw an error so App.jsx can handle it
+  
   if (!response.ok) {
     throw new Error(`Request failed (${response.status})`);
   }
 
   const data = await response.json();
 
-  // items can be undefined, so fallback to empty array
-  return data.items || [];
+  return {
+    items: data.items || [],
+    totalItems: data.totalItems || 0,
+  };
 }

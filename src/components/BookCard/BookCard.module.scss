@@ -38,11 +38,10 @@
   opacity: 0.8;
   font-size: v.$font-sm;
   line-height: 1.35;
-  color: v.$color-muted;
+  /*color: v.$color-muted;*/
 
   /* limit description length */
   display: -webkit-box;
-  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
