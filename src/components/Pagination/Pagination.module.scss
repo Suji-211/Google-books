@@ -1,0 +1,34 @@
+@use "../../styles/variables" as v;
+
+.pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0 6px;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 10px 14px;
+  border-radius: v.$radius-sm;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-text;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.info {
+  color: v.$color-text;
+}
+
+.muted {
+  color: v.$color-muted;
+  margin-left: 6px;
+}
