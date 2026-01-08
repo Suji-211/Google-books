@@ -1,4 +1,7 @@
+@use "../../styles/variables" as v;
+
 .header {
   padding: 20px;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid v.$color-border;
+  color: v.$color-text;
 }
